@@ -49,11 +49,11 @@ defmodule Exostatic.Build do
            |> File.read!
            |> Poison.decode!(keys: :atoms)
            |> Map.to_list
-    pageinfo = "#{dir}pages/pages.json"
+    page_info = "#{dir}pages/pages.json"
                |> File.read!
-               |> Poison.decode!(as: [%Exostatic.Pageinfo{}])
+               |> Poison.decode!(as: [%Exostatic.PageInfo{}])
     Exostatic.put_data :proj, proj
-    Exostatic.put_data :pageinfo, pageinfo
+    Exostatic.put_data :page_info, page_info
   end
 
   defp load_templates(dir) do
