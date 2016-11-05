@@ -1,5 +1,10 @@
 # Exostatic
 
+## THIS IS NOT EVEN CLOSE TO BEING READY, DO NOT USE. WIP
+
+## What is Exostatic?
+This will be a static site generator.
+
 **TODO: Add description**
 
 ## Installation
@@ -21,4 +26,3 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       [applications: [:exostatic]]
     end
     ```
-
