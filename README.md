@@ -2,8 +2,8 @@
 
 ## THIS IS NOT EVEN CLOSE TO BEING READY, DO NOT USE. WIP
 
-## What is Exostatic?
-This will be a static site generator.
+## What is ExoStatic?
+ExoStatic is a static site and blog generator.
 
 **TODO: Add description**
 
