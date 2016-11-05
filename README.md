@@ -1,4 +1,4 @@
-# Exostatic
+# ExoStatic
 
 ## THIS IS NOT EVEN CLOSE TO BEING READY, DO NOT USE. WIP
 
