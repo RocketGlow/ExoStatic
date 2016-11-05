@@ -58,7 +58,7 @@ defmodule Exostatic.CmdLine do
 
   defp info() do
     IO.puts "\x1b[1mExostatic -- Static website and blog generator using Elixir"
-    IO.puts "Version 0.1.0. Copyright (C) 2016 Chris Allen Moore. <chris@rocketglow.com>\x1b[0m\n"
+    IO.puts "Version 0.1.0. Copyright (C) 2016 Chris Allen Moore. <chris@rocketglow.com>\x1b[0m"
     IO.puts "inspired by the wonderful static website builder, Serum"
   end
 
