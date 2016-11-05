@@ -94,7 +94,7 @@ defmodule Exostatic.Build do
 
   defp compile_nav do
     proj = Exostatic.get_data :proj
-    info = Exostatic.get_data :pageinfo
+    info = Exostatic.get_data :page_info
     IO.puts "Compiling main navigation HTML stub..."
     template = Exostatic.get_data "template_nav"
     html = Renderer.render template, proj ++ [pages: Enum.filter(info, &(&1.menu))]

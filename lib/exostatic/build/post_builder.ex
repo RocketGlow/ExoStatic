@@ -46,7 +46,7 @@ defmodule Exostatic.Build.PostBuilder do
     stub = Earmark.to_html(lines)
     preview = make_preview(stub)
 
-    info = %Exostatic.Postinfo{
+    info = %Exostatic.PostInfo{
       file: file, title: title, date: datetime, tags: tags,
       url: "#{Keyword.get proj, :base_url}posts/#{file}.html",
       preview_text: preview

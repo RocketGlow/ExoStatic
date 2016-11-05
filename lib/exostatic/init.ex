@@ -64,7 +64,7 @@ defmodule Exostatic.Init do
     end)
     File.open!("#{dir}pages/pages.json", [:write, :utf8], fn f ->
       tmp = Poison.encode!([
-        %Exostatic.Pageinfo{
+        %Exostatic.PageInfo{
           name: "index",
           type: "md",
           title: "Welcome!",

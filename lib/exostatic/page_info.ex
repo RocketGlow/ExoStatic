@@ -1,6 +1,6 @@
 defmodule Exostatic.PageInfo do
   @moduledoc """
-  This module defines Pageinfo struct.
+  This module defines PageInfo struct.
   """
 
   @derive [Poison.Encoder]

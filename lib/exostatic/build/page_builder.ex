@@ -3,7 +3,7 @@ defmodule Exostatic.Build.PageBuilder do
 
   def run(src, dest, mode) do
     template = Exostatic.get_data("template_page")
-    info = Exostatic.get_data(:pageinfo)
+    info = Exostatic.get_data(:page_info)
     launch(src, dest, info, template, mode)
   end
 
