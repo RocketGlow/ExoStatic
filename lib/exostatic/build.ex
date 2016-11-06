@@ -58,9 +58,18 @@ defmodule Exostatic.Build do
 
   defp load_templates(dir) do
     IO.puts "Loading templates..."
+    # get the theme name, which is the theme directory name, so we can use it as the theme for our site
+    %{theme: current_theme} = "#{dir}exostatic.json"
+                        |> File.read!
+                        |> Poison.decode!(keys: :atoms)
+    IO.puts "Using the theme: #{current_theme}"
+
+    # grab all the template files
     ["base", "list", "page", "post", "nav"]
     |> Enum.each(fn x ->
-      tree = EEx.compile_file("#{dir}templates/#{x}.html.eex")
+      # tree = EEx.compile_file("#{dir}templates/#{x}.html.eex") old
+      # TODO: the theme is hardcoded right now, put this in exostatic.json
+      tree = EEx.compile_file("#{dir}themes/#{current_theme}/#{x}.html.eex")
       Exostatic.put_data "template_#{x}", tree
     end)
   end

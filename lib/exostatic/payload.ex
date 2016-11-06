@@ -15,6 +15,10 @@ defmodule Exostatic.Payload do
       <p><%= @site_description %></p>
       <%= @navigation %>
       <%= @contents %>
+
+      <p>
+        This site was generated with the <strong><%= @theme %></strong> theme.
+      </p>
     </body>
   </html>
   """
