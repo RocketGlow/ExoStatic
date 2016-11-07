@@ -32,11 +32,10 @@ defmodule Exostatic.Init do
   end
 
   # Added themes directory with default_exostatic theme directory
-  # TODO: clean this up after themes are working
   # TODO: do i do the theme as just copy it over and just create the themes directory? might make more sense
   defp init(dir, :dir) do
     ["posts", "pages", "media", "templates", "themes", "themes/default_exostatic/", "themes/default_exostatic/assets/css",
-    "themes/default_exostatic/assets/js", "themes/default_exostatic/assets/images", "assets/css", "assets/js", "assets/images"]
+    "themes/default_exostatic/assets/js", "themes/default_exostatic/assets/images"]
     |> Enum.each(fn x ->
       File.mkdir_p!("#{dir}#{x}")
       IO.puts "Created directory `#{dir}#{x}`."
@@ -53,7 +52,9 @@ defmodule Exostatic.Init do
         base_url: "/",
         date_format: "{WDfull}, {D} {Mshort} {YYYY}",
         preview_length: 200,
-        theme: "default_exostatic"}
+        theme: "default_exostatic",
+        trailing_slash_links: false
+      }
       |> Poison.encode!(pretty: true, indent: 2)
     File.open!("#{dir}exostatic.json", [:write, :utf8], fn f ->
       IO.write(f, projinfo)
