@@ -1,3 +1,6 @@
+# Don't need these files
+.DS_Store
+
 # The directory Mix will write compiled artifacts to.
 /_build
 
@@ -16,4 +19,8 @@ erl_crash.dump
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
 
+# Don't need to save escript file (notice no dot or extenstion)
 exostatic
+
+# Since we're ignoring exostatic file, don't ignore the exostatic directory
+!exostatic/
