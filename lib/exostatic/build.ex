@@ -20,9 +20,13 @@ defmodule Exostatic.Build do
     else
       IO.puts "Rebuilding Website..."
       Exostatic.init_data
+      # get the theme name, which is the theme directory name, so we can use it as the theme for our site
+      %{theme: current_theme} = "#{src}exostatic.json"
+                          |> File.read!
+                          |> Poison.decode!(keys: :atoms)
 
       load_info src
-      load_templates src
+      load_templates src, current_theme
       clean_dest dest
 
       {time, _} = :timer.tc(fn ->
@@ -30,7 +34,7 @@ defmodule Exostatic.Build do
         launch_tasks mode, src, dest
       end)
       IO.puts "Build process took #{time}us."
-      copy_assets src, dest
+      copy_assets src, dest, current_theme
 
       if display_done do
         IO.puts ""
@@ -56,20 +60,20 @@ defmodule Exostatic.Build do
     Exostatic.put_data :page_info, page_info
   end
 
-  defp load_templates(dir) do
+  defp load_templates(dir, current_theme) do
     IO.puts "Loading templates..."
     # get the theme name, which is the theme directory name, so we can use it as the theme for our site
-    %{theme: current_theme} = "#{dir}exostatic.json"
-                        |> File.read!
-                        |> Poison.decode!(keys: :atoms)
+    #%{theme: current_theme} = "#{dir}exostatic.json"
+                        #|> File.read!
+                        #|> Poison.decode!(keys: :atoms)
     IO.puts "Using the theme: #{current_theme}"
 
     # grab all the template files
     ["base", "list", "page", "post", "nav"]
     |> Enum.each(fn x ->
-      # tree = EEx.compile_file("#{dir}templates/#{x}.html.eex") old
-      # TODO: the theme is hardcoded right now, put this in exostatic.json
-      tree = EEx.compile_file("#{dir}themes/#{current_theme}/#{x}.html.eex")
+      #tree = EEx.compile_file("#{dir}templates/#{x}.html.eex") old
+      # compile theme
+      tree = EEx.compile_file("#{dir}themes/#{current_theme}/#{x}.html.eex") # TODO: the theme is hardcoded right now, put this in exostatic.json
       Exostatic.put_data "template_#{x}", tree
     end)
   end
@@ -110,12 +114,12 @@ defmodule Exostatic.Build do
     Exostatic.put_data :navstub, html
   end
 
-  defp copy_assets(src, dest) do
+  defp copy_assets(src, dest, current_theme) do
     IO.puts "Cleaning assets and media directories..."
     File.rm_rf! "#{dest}assets/"
     File.rm_rf! "#{dest}media/"
     IO.puts "Copying assets and media..."
-    case File.cp_r("#{src}assets/", "#{dest}assets/") do
+    case File.cp_r("#{src}themes/#{current_theme}/assets/", "#{dest}assets/") do
       {:error, :enoent, _} -> IO.puts "\x1b[93mAssets directory not found. Skipping...\x1b[0m"
       {:ok, _} -> :ok
     end
