@@ -9,6 +9,7 @@ defmodule Exostatic.Payload do
     <head>
       <meta charset="utf-8">
       <title><%= @site_name %> - <%= @page_title %></title>
+      <link rel="stylesheet" href="/assets/css/main.css" media="screen">
     </head>
     <body>
       <h1><a href="<%= @base_url %>"><%= @site_name %></a></h1>
@@ -19,6 +20,8 @@ defmodule Exostatic.Payload do
       <p>
         This site was generated with the <strong><%= @theme %></strong> theme.
       </p>
+
+      <script type="text/javascript" src="/assets/js/main.js"></script>
     </body>
   </html>
   """
