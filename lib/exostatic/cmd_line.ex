@@ -59,7 +59,7 @@ defmodule Exostatic.CmdLine do
   defp info() do
     IO.puts "\x1b[1mExostatic -- Static website and blog generator using Elixir"
     # TODO: Make the version automatically pulled from the mix.exs file
-    IO.puts "Version 0.2.0. Copyright (C) 2016 Chris Allen Moore. <chris@rocketglow.com>\x1b[0m"
+    IO.puts "Version 0.2.1. Copyright (C) 2016 Chris Allen Moore. <chris@rocketglow.com>\x1b[0m"
     IO.puts "inspired by the wonderful static website builder, Serum"
   end
 

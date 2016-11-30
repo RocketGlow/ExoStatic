@@ -3,7 +3,7 @@ defmodule Exostatic.Mixfile do
 
   def project do
     [app: :exostatic,
-     version: "0.2.0",
+     version: "0.2.1",
      elixir: "~> 1.3",
      escript: [main_module: Exostatic.CmdLine],
      build_embedded: Mix.env == :prod,
@@ -37,7 +37,8 @@ defmodule Exostatic.Mixfile do
       {:mime, "~> 1.0"},
       {:poison, "~> 3.0"},
       {:timex, "~> 3.1"},
-      {:tzdata, "~> 0.5.9"}
+      {:tzdata, "~> 0.5.9", override: true},
+      {:yamerl, "~> 0.3.3"}
     ]
   end
 end
